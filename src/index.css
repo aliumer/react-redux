@@ -1,0 +1,12 @@
+#app {
+    max-width: 850px;
+    margin: auto;
+}
+
+nav {
+    padding: 20px 0 20px 0;
+}
+
+a.active {
+    color: #F15B2A;
+}
