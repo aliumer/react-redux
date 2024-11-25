@@ -7,7 +7,7 @@ import PropTypes from "prop-types";
 import { bindActionCreators } from "redux";
 import CourseList from "./CourseList";
 import Spinner from "../common/Spinner";
-import toast from "react-toastify";
+import { toast } from "react-toastify";
 
 class CoursesPage extends React.Component {
   state = {
@@ -79,11 +79,11 @@ function mapStateToProps(state) {
       state.authors.length === 0
         ? []
         : state.courses.map(course => {
-            return {
-              ...course,
-              authorName: state.authors.find(a => a.id === course.authorId).name
-            };
-          }),
+          return {
+            ...course,
+            authorName: state.authors.find(a => a.id === course.authorId).name
+          };
+        }),
     loading: state.apiCallsInProgress > 0
   };
 }

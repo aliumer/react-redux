@@ -5,7 +5,21 @@
     "start": "run-p start:dev start:api",
     "start:dev": "webpack server --config webpack.config.dev.js --port 3000",
     "prestart:api": "node tools/createMockDb.js",
-    "start:api": "node tools/apiServer.js"
+    "start:api": "node tools/apiServer.js",
+    "test": "jest --watch",
+    "test:ci": "jest",
+    "clean:build": "rimraf ./build && mkdir build",
+    "prebuild": "run-p clean:build test:ci",
+    "build": "webpack --config webpack.config.prod.js",
+    "postbuild": "run-p start:api serve:build",
+    "serve:build": "http-server ./build"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|mp3|webm|wav|m4a|aac|oga)$": "<rootDir>/tools/fileMock.js",
+      "\\.(css|less)$": "<rootDir>/tools/styleMock.js"
+    }
   },
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.7",
@@ -61,7 +75,7 @@
     "trailingComma": "none"
   },
   "babel": {
-    "presets" : [
+    "presets": [
       "babel-preset-react-app"
     ]
   },

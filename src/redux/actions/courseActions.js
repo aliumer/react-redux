@@ -4,15 +4,15 @@ import { beginApiCall, apiCallError } from "./apiStatusActions";
 
 // this file will hold our course related action creaters.
 
-function loadCoursesSuccess(courses) {
+export function loadCoursesSuccess(courses) {
     return { type: types.LOAD_COURSES_SUCCESS, courses };
 }
 
-function updateCoursesSuccess(courses) {
+export function updateCoursesSuccess(courses) {
     return { type: types.UPDATE_COURSES_SUCCESS, courses };
 }
 
-function createCoursesSuccess(courses) {
+export function createCoursesSuccess(courses) {
     return { type: types.CREATE_COURSES_SUCCESS, courses };
 }
 
